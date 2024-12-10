@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos</title>
+    <link rel="stylesheet" href="pedido.css">
+</head>
+<body>
+    <div class="container">
+        <center><h1>Gestión de pedidos</h1></center>
+
+        <!-- Formulario para agregar/actualizar pedidos -->
+        <form id="pedidoForm">
+            <label for="cliente">Nombre del cliente:</label>
+            <input type="text" id="cliente" placeholder="Nombre del Cliente" required>
+            
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" required>
+            
+            <label for="total">Total:</label>
+            <input type="number" id="total" placeholder="Total" required>
+            
+            <label for="producto">Nombre del producto:</label>
+            <input type="text" id="producto" placeholder="Nombre del Producto" required>
+            
+            <label for="observaciones">Observaciones:</label>
+            <textarea id="observaciones" placeholder="Escribe tus observaciones aquí..." rows="4"></textarea>
+            
+            <button type="submit">Agregar pedido</button>
+        </form>
+        
+
+        <!-- Tabla de pedidos -->
+        <table id="pedidoTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Total</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se insertarán los pedidos mediante JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

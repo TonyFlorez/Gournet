@@ -1,0 +1,99 @@
+/* Estilos para modulo_informes.html */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('fondoinformes.jpg'); /* Reemplaza con la ruta de tu imagen */
+    background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    color: #fff;
+}
+
+
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    color: #4c0b0b; /* Subtítulo color vino tinto oscuro */
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    color: #333;
+}
+
+select,
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #4c0b0b; /* Color vino tinto */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #732020; /* Color vino tinto más oscuro al pasar el cursor */
+}
+
+.result-container {
+    width: 100%;
+    max-width: 600px; /* Ancho máximo para los resultados */
+    margin-top: 30px; /* Espacio entre formulario y resultados */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #333;
+}
+
+#resultados {
+    margin-top: 20px;
+    text-align: left; /* Alinear texto a la izquierda para los resultados */
+}
+
+/* Estilos para los elementos de la lista de informes */
+.result-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.result-container li {
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+}

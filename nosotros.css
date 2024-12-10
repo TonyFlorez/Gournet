@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.about-gournet {
+    position: relative;
+    color: #ffffff;
+    padding: 40px 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: url('fondonosotros.jpg') no-repeat center center/cover;
+}
+
+.about-gournet .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente para el contenido */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.about-gournet h1 {
+    font-size: 2em;
+    color: #f1c40f; /* Tono dorado para destacar */
+    margin-bottom: 10px;
+}
+
+.about-gournet p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.about-gournet ul {
+    text-align: left;
+    list-style-type: none;
+    padding: 0;
+}
+
+.about-gournet ul li {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.about-gournet ul li strong {
+    color: #1abc9c;
+}

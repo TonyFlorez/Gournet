@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Módulo de Informes - Gournet</title>
+    <link rel="stylesheet" href="moduloinformes.css">
+    <style>
+        /* Estilo general para los inputs */
+        input[type="text"], input[type="date"], select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .result-container {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Estilo para los inputs más grandes (como texto y cantidad) */
+        .input-large {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="form-container">
+        <h2>Generar Informe</h2>
+        <form id="informeForm">
+            <label for="tipoInforme">Selecciona el tipo de informe:</label>
+            <select id="tipoInforme" required>
+                <option value="">-- Seleccionar --</option>
+                <option value="ventas">Informe de Ventas</option>
+                <option value="empleados">Informe de Empleados</option>
+                <option value="proveedores">Informe de Proveedores</option>
+                <option value="desempeno">Informe de Desempeño</option>
+            </select>
+
+            <label for="fechaInicio">Fecha de Inicio:</label>
+            <input type="date" id="fechaInicio" required>
+
+            <label for="producto">Producto:</label>
+            <input type="text" id="producto" class="input-large" placeholder="Ingresa el nombre del producto" required>
+
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" placeholder="Ingresa la cantidad" required>
+
+            <button type="button" onclick="generarInforme()">Generar Informe</button>
+        </form>
+    </div>
+
+    <div class="result-container">
+        <h2>Informe Generado</h2>
+        <!-- Aquí se mostrará la tabla de resultados -->
+        <table id="tablaInforme">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Cantidad</th>
+                    <th>Total</th>
+                    <th>Producto</th>
+                </tr>
+            </thead>
+            <tbody id="tablaCuerpo">
+                <!-- Aquí se insertarán las filas dinámicamente -->
+            </tbody>
+        </table>
+        <p id="noDataMessage" style="display:none; color: red;">No se encontraron datos para el informe.</p>
+    </div>
+
+    <script>
+        // Función para generar el informe
+        function generarInforme() {
+            const tipoInforme = document.getElementById("tipoInforme").value;
+            const fechaInicio = document.getElementById("fechaInicio").value;
+            const producto = document.getElementById("producto").value;
+            const cantidad = document.getElementById("cantidad").value;
+
+            // Verificar que todos los campos estén completos
+            if (!tipoInforme || !fechaInicio || !producto || !cantidad) {
+                alert("Por favor, complete todos los campos.");
+                return;
+            }
+
+            // Enviar la solicitud POST al servidor
+            fetch('/api/generarInforme', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ tipoInforme, fechaInicio, producto, cantidad })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const tablaCuerpo = document.getElementById("tablaCuerpo");
+                const noDataMessage = document.getElementById("noDataMessage");
+
+                // Limpiar la tabla antes de agregar nuevos datos
+                tablaCuerpo.innerHTML = "";
+                noDataMessage.style.display = "none";
+
+                // Verificar si los datos existen
+                if (data.success && data.data.length > 0) {
+                    // Recorrer los datos y agregar las filas a la tabla
+                    data.data.forEach(informe => {
+                        const fila = document.createElement("tr");
+
+                        fila.innerHTML = `
+                            <td>${informe.id}</td>
+                            <td>${informe.fecha}</td>
+                            <td>${informe.cantidad}</td>
+                            <td>${informe.total}</td>
+                            <td>${informe.producto_nombre || 'N/A'}</td>
+                        `;
+
+                        tablaCuerpo.appendChild(fila);
+                    });
+                } else {
+                    // Mostrar mensaje de que no hay datos
+                    noDataMessage.style.display = "block";
+                }
+            })
+            .catch(error => {
+                console.error("Error al generar el informe:", error);
+                alert("Hubo un error al generar el informe.");
+            });
+        }
+    </script>
+</body>
+</html>

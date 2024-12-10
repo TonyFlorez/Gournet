@@ -1,0 +1,37 @@
+/* Estilos generales del cuerpo del documento */
+body {
+    margin: 0; /* Elimina el margen por defecto del cuerpo */
+    padding: 0; /* Elimina el padding por defecto del cuerpo */
+    background-image: url('fondopedido.jpg'); /* Ruta a la imagen de fondo */
+    background-size: cover; /* Asegura que la imagen cubra toda el área */
+    background-position: center; /* Centra la imagen en la página */
+    font-family: Arial, sans-serif; /* Establece la fuente general */
+}
+
+/* Estilos generales del formulario */
+form {
+    max-width: 400px; /* Ancho máximo del formulario */
+    margin: auto; /* Centra el formulario horizontalmente */
+    padding: 20px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde del formulario */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: rgba(255, 255, 255, 0.9); /* Color de fondo blanco con opacidad */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilos de las etiquetas */
+label {
+    display: block; /* Muestra las etiquetas como bloques */
+    margin-bottom: 5px; /* Espacio debajo de las etiquetas */
+    font-weight: bold; /* Negrita para las etiquetas */
+}
+
+/* Estilos de los inputs y textarea */
+input, textarea {
+    width: 100%; /* Ancho del campo igual al del formulario */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espacio debajo de los campos */
+    border: 1px solid #ccc; /* Borde de los campos */
+    border-radius: 3px; /* Bordes redondeados para los campos */
+  
+}
